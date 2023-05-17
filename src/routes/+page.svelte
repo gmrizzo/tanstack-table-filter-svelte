@@ -167,12 +167,9 @@
 
     const table = createSvelteTable(options);
 
-    $: {
-        console.log("$table.getState()", $table);
-        if ($table.getState().columnFilters[0]?.id === "fullName") {
-            if ($table.getState().sorting[0]?.id !== "fullName") {
-                $table.setSorting([{ id: "fullName", desc: false }]);
-            }
+    $: if ($table.getState().columnFilters[0]?.id === "fullName") {
+        if ($table.getState().sorting[0]?.id !== "fullName") {
+            $table.setSorting([{ id: "fullName", desc: false }]);
         }
     }
 </script>
